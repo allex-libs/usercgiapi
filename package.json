@@ -1,0 +1,29 @@
+{
+  "name": "allex_usercgiapilib",
+  "version": "1.0.0",
+  "description": "AllexJS API for the User class that consumes the CGI service",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "devDependencies": {
+    "superagent": "5.x"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/allex-libs/usercgiapi.git"
+  },
+  "keywords": [
+    "ecosystem:AllexJS",
+    "user",
+    "cgi",
+    "api",
+    "lib"
+  ],
+  "author": "Andrija Petrovic <andrija.hers@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/allex-libs/usercgiapi/issues"
+  },
+  "homepage": "https://github.com/allex-libs/usercgiapi#readme"
+}

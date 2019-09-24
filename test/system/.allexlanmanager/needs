@@ -1,0 +1,76 @@
+[
+{
+  "modulename": "allex_usersessionsservice",
+  "instancename": "UserSessions",
+  "storage": {
+    "modulename": "allex_mongostorage",
+    "propertyhash": {
+      "server": "127.0.0.1",
+      "database": "testusercgi",
+      "table": "sessions"
+    }
+  }
+},
+{
+  "modulename": "allex_userresolverservice",
+  "instancename": "UsersDBResolver",
+  "propertyhash": {
+    "data": {
+      "modulename": "test__usercgi_dusersservice",
+      "storage": {
+        "modulename": "allex_mongostorage",
+        "propertyhash": {
+          "server": "127.0.0.1",
+          "database": "testusercgi",
+          "table": "users"
+        }
+      }
+    }
+  }
+},
+{
+  "modulename": "allex_entrypointservice",
+  "instancename": "EntryPoint",
+  "propertyhash": {
+    "port": 8008,
+    "target": "instancename:Users",
+    "allowAnonymous": true,
+    "strategies": {
+      "remote": {
+        "sinkname":"UsersDBResolver",
+        "identity":{
+          "role": "user",
+          "name": "user"
+        }
+      }
+    },
+    "sessionsDB": "UserSessions"
+  }
+},
+{
+  "modulename":"allex_hotelservice",
+  "instancename":"Users",
+  "wsport": 8009,
+  "propertyhash": {
+    "usermodule": {
+      "username": "test",
+      "namespace": "usercgi"
+    }
+  }
+},
+{
+  "modulename": "allex_cgiservice",
+  "instancename": "CGI",
+  "propertyhash": {
+    "sessioneventsdbname": "CGI.db",
+    "port": 8010
+  }
+},
+{
+  "modulename": "allex_directoryservice",
+  "instancename": "Files",
+  "propertyhash": {
+    "path": "files"
+  }
+}
+]

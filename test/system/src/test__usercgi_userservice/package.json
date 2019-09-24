@@ -1,0 +1,20 @@
+{
+  "name": "test__usercgi_userservice",
+  "version": "1.0.0",
+  "description": "UserService",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:allex-servercore-libs/user.git"
+  },
+  "keywords": [
+    "ecosystem:allex",
+    "Service",
+    "User"
+  ],
+  "author": "HERS Belgrade",
+  "license": "ISC"
+}

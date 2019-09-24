@@ -1,0 +1,5 @@
+*.swp
+*.swo
+node_modules
+test/system/files
+test/system/CGI.db
