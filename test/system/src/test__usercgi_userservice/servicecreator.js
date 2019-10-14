@@ -6,11 +6,16 @@ function createUserService(execlib, ParentService, usercgiapilib, httpresponsefi
 
   function MyTextFile (filename, destroyables) {
     PlainTextFile.call(this, filename, destroyables);
+    this.service = destroyables[0];
     this.called = false;
   }
   lib.inherit(MyTextFile, PlainTextFile);
   MyTextFile.prototype.destroy = function () {
+    if (this.service) {
+      this.service.state.set('downloadURLDone', true);
+    }
     this.called = null;
+    this.service = null;
     PlainTextFile.prototype.destroy.call(this);
   };
   MyTextFile.prototype.getPayload = function () {
@@ -29,10 +34,11 @@ function createUserService(execlib, ParentService, usercgiapilib, httpresponsefi
     };
   }
 
-  var cnt = 0, maxcnt = 0;
+  var cnt = 0, maxcnt = 0, totalcnt = 0;
 
   function UserService(prophash) {
     cnt++;
+    totalcnt++;
     if (cnt>maxcnt) {
       maxcnt = cnt;
     }
@@ -54,7 +60,7 @@ function createUserService(execlib, ParentService, usercgiapilib, httpresponsefi
   
   UserService.prototype.__cleanUp = function() {
     cnt--;
-    console.log(this.name, 'going down', 'max was', maxcnt, cnt, 'left');
+    console.log(this.name, 'going down', cnt, 'left', 'max was', maxcnt, 'and total', totalcnt);
     if (this.downloadHandler) {
       this.downloadHandler.destroy();
     }
@@ -75,15 +81,18 @@ function createUserService(execlib, ParentService, usercgiapilib, httpresponsefi
   };
 
   UserService.prototype.onUpload = function () {
+    this.state.set('uploadURLDone', true);
     //console.log('onUpload', arguments);
   };
   
   UserService.prototype.onUploadUnique = function () {
     //console.log('onUploadUnique', arguments);
+    this.state.set('uploadUniqueURLDone', true);
   };
   
   UserService.prototype.onUploadContents = function () {
     //console.log('onUploadContents', arguments);
+    this.state.set('uploadContentsURLDone', true);
   };
 
   UserService.prototype.onDownload = function (taskobj, cgiitem) {

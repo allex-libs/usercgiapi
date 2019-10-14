@@ -43,7 +43,6 @@ function createUploadHandlerBase (execlib, SinkHolderMixin, mylib) {
     return ret;
   };
   UploadHandlerBase.prototype.onUploadId = function (defer, findandruntask, originalprophash, id, cgiaddress, cgiport) {
-    console.log(this.findAndRunTaskName, 'onUploadId', id, cgiaddress, cgiport);
     findandruntask.destroy();
     var cgisink = originalprophash.sink, proto = 'http';
     if (this.secure || cgiport === 443) {

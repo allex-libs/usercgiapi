@@ -1,5 +1,7 @@
 *.swp
 *.swo
 node_modules
+test/system/allexmaster.pid
 test/system/files
+test/system/files_*
 test/system/CGI.db
