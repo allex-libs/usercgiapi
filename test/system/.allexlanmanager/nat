@@ -2,13 +2,13 @@
   {
     "iaddress": "127.0.0.1",
     "iport": 8009,
-    "eaddress": "127.0.0.1",
+    "eaddress": "192.168.1.204",
     "eport": 8009
   },
   {
     "iaddress": "127.0.0.1",
     "iport": 8010,
-    "eaddress": "127.0.0.1",
+    "eaddress": "192.168.1.204",
     "eport": 8010
   }
 ]
