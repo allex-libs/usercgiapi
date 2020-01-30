@@ -263,7 +263,7 @@ describe('Basic Test', function () {
   it('Create Requester', function () {
     return setGlobal('Requester', new HTTPRequester('http', _EntryPointAddress, _EntryPointPort, 'GET', {debug:true}));
   });
-  testCycle(100);
+  testCycle(10);
   /*
   */
 });
